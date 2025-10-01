@@ -1524,14 +1524,10 @@ func columnsByRequest(r *http.Request) (columns []string, err error) {
 	columnsArr := queries["_select"]
 	for _, j := range columnsArr {
 		cArgs := strings.Split(j, ",")
-		columns = append(columns, cArgs...)
 		for _, arg := range cArgs {
-			spaceArgs := strings.Fields(strings.TrimSpace(arg))
-			for _, field := range spaceArgs {
-				field = strings.TrimSpace(field)
-				if field != "" {
-					columns = append(columns, field)
-				}
+			field := strings.TrimSpace(arg)
+			if field != "" {
+				columns = append(columns, field)
 			}
 		}
 	}
