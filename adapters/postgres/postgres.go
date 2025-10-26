@@ -1524,7 +1524,12 @@ func columnsByRequest(r *http.Request) (columns []string, err error) {
 	columnsArr := queries["_select"]
 	for _, j := range columnsArr {
 		cArgs := strings.Split(j, ",")
-		columns = append(columns, cArgs...)
+		for _, arg := range cArgs {
+			field := strings.TrimSpace(arg)
+			if field != "" {
+				columns = append(columns, field)
+			}
+		}
 	}
 	if queries.Get("_groupby") != "" {
 		columns, err = normalizeAll(columns)
