@@ -1,0 +1,9 @@
+tenants:
+  loopx:
+    dbUrl: postgres://postgres:postgres@localhost:5432/loopx
+    config:
+      any: value
+  niti:
+    dbUrl: postgres://postgres:postgres@localhost:5432/weber
+    config:
+      any: value
